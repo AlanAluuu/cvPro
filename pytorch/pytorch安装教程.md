@@ -16,14 +16,13 @@
 
 安装torch 之前我们首先需要清楚的了解torch版本和内置cuda以及python之间的关系表，以防后续安装产生很大的问题。（查看本机的python版本为python -V）。这是我截取B站上某位up主整理的表格，而我第一次安装的时候由于python版本为3.10，下载的cuda版本为11.0所以导致了冲突，后续也不能下载。
 
-![image-20230531001432842](C:\Users\Lulu\Desktop\cv\image\pytorch安装4.png)
+![Alt text](https://github.com/AlanAluuu/cvPro/blob/main/pytorch/img/pytorch%E5%AE%89%E8%A3%854.png)
 
 这里我决定下载cuda 版本为11.0的。这里给出查询官方安装文档的地址：[CUDA Toolkit Archive | NVIDIA Developer ](https://developer.nvidia.com/cuda-toolkit-archive)。
 
-这个网站可以下载不同版本的cuda以及查看在线文档。因为我的操作系统是win11，但是安装11.3.0的时候没有win11的选项，查了资料发现选win10的也可以。所以我下载的环境是这亚子的。
+这个网站可以下载不同版本的cuda以及查看在线文档。因为我的操作系统是win11，但是安装11.0.1的时候没有win11的选项，查了资料发现选win10的也可以。所以我下载的环境是这亚子的。
 
-![image-20230530171418415](C:\Users\Lulu\Desktop\cv\image\pytorch安装5.png)
-
+![Alt text](https://github.com/AlanAluuu/cvPro/blob/main/pytorch/img/pytorch%E5%AE%89%E8%A3%855.png)
 
 
 然后下载完毕后双击进行安装，一路安装下去即可。这里我主要参考了这个文章，[win11配置深度学习环境GPU - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/460806048)。这里提供一个测试安装成功与否的方式。命令行win+R打开命令行。输入：nvcc -V可以查看到相应的版本信息即说明安装成功。
@@ -34,37 +33,37 @@
 
 cuDNN官网下载链接：https://developer.nvidia.com/rdp/cudnn-archive。这里我选择的是最新版本的CUDA11.x。
 
-![image-20230530174438436](C:\Users\Lulu\Desktop\cv\image\pytorch安装6.png)
+![Alt text](https://github.com/AlanAluuu/cvPro/blob/main/pytorch/img/pytorch%E5%AE%89%E8%A3%856.png)
 
 下载cudnn需要到NVIDIV官网注册，这一步我稍微卡壳了一下，因为没有办法注册账号，看了网上也有人没有办法注册，这里提供俩思路去下载，一个是直接网上搜安装包，csdn上有很多人都提供了这个的安装包，但是要注意下载的cudnn 版本要和cuda版本相对应；另一种方法是可以到淘宝上搜一下，下载对应安装包就一块多。
 
 下载完后解压cudnn，解压cudnn后的界面是下面的样子。
 
-![image-20230530205128117](C:\Users\Lulu\Desktop\cv\image\pytorch安装7.png)
+![Alt text](https://github.com/AlanAluuu/cvPro/blob/main/pytorch/img/pytorch%E5%AE%89%E8%A3%857.png)
 
 cudnn后里面有bin，include，lib三个文件夹；而打开上面安装好的CUDA目录，里面也存在bin，include，lib三个文件夹，只要将**cudnn中bin，include内的文件全选复制到CUDA中的bin，include**内即可。而对于cdnn里的lib文件夹，里面还存在一个x64文件夹，而CUDA中lib文件中存在Win32和x64文件，于是这时把**cudnn中lib里的x64文件夹拷贝所有内容到CUDA里lib中x64**文件夹中去。
 
 这里如果你忘记安装的cuba的地址在哪了，就可以去高级属性里面查看环境变量Path ，第一条就是我们刚安装的cuba的bin 的地址。如下所示：C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.0\bin
 
-![image-20230530204136535](C:\Users\Lulu\Desktop\cv\image\pytorch安装8.png)
+![Alt text](https://github.com/AlanAluuu/cvPro/blob/main/pytorch/img/pytorch%E5%AE%89%E8%A3%858.png)
 
 验证cuda是否安装成功，首先win+R启动cmd，进入到CUDA安装目录下的 ...\extras\demo_suite，我的就是C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.0\extras\demo_suite，然后分别运行bandwidthTest.exe和deviceQuery.exe，返回Result=PASS表示cuda安装成功，同样运行deviceQuery.exe也可得到PASS。
 
-![image-20230530204801462](C:\Users\Lulu\Desktop\cv\image\pytorch安装9.png)
+![Alt text](https://github.com/AlanAluuu/cvPro/blob/main/pytorch/img/pytorch%E5%AE%89%E8%A3%859.png)
 
-![image-20230530204844941](C:\Users\Lulu\Desktop\cv\image\pytorch安装10.png)
+![Alt text](https://github.com/AlanAluuu/cvPro/blob/main/pytorch/img/pytorch%E5%AE%89%E8%A3%8510.png)
 
 ## 三、Anaconda的安装
 
 这一步的话我是因为之前下载过，所以就可以直接省略了，可以进入官网https://link.zhihu.com/?target=https%3A//www.anaconda.com/products/individual下载。这里仅仅提供一种判断下载成功与否的判断。win+R打开命令行输入conda list,如果显示下面的图片，就说明下载成功了。
 
-![image-20230530205849371](C:\Users\Lulu\Desktop\cv\image\pytorch安装11.png)
+![Alt text](https://github.com/AlanAluuu/cvPro/blob/main/pytorch/img/pytorch%E5%AE%89%E8%A3%8511.png)
 
 如果显示'conda' 不是内部或外部命令，也不是可运行的程序或批处理文件。则说明环境变量没有配置好。
 
 ## 四、pytorch的下载
 
-我本机上的python是3.10的，根据pytorch和python的对应关系，显然不能下载成功。如果想从python3.10降低到python3.6，则需要多安装多一个python3.6的环境。这个是在Anaconda Prompt下操作的。
+我本机上的python是3.10的，根据pytorch和python的对应关系，显然不能下载成功。如果想从python3.10降低到python3.6，则需要多安装多一个python3.6的虚拟环境。这个是在Anaconda Prompt下操作的。
 
 打开Anaconda Prompt，先配置镜像源，base环境里面输入下面的内容
 
@@ -90,7 +89,7 @@ activate py36
 
 左边的环境就从base（基本环境），变成了py36环境。(如果进行pip list的时候提醒你需要更新pip，按照命令更新即可)
 
-![image-20230531004936356](C:\Users\Lulu\Desktop\cv\image\pytorch安装12.png)
+![Alt text](https://github.com/AlanAluuu/cvPro/blob/main/pytorch/img/pytorch%E5%AE%89%E8%A3%8512.png)
 
 下面我们就需要在这个虚拟的环境中进行下载pytorch
 
@@ -104,11 +103,11 @@ conda install pytorch==1.13.1 torchvision==0.14.1 torchaudio==0.13.1 pytorch-cud
 
 然后要注意一下pytorch和cuda版本对应关系。再次重申一下这张图。
 
-![image-20230531001432842](C:\Users\Lulu\Desktop\cv\image\pytorch安装13.png)
+![Alt text](https://github.com/AlanAluuu/cvPro/blob/main/pytorch/img/pytorch%E5%AE%89%E8%A3%8513.png)
 
 所以这里我安装了1.7.0版本的pytorch，也就是下面的语句。这里版本对应的语句信息可以在这个网站中找到不同版本的cuda以及不同环操作系统下的pytorch在conda环境下下载的命令：[Previous PyTorch Versions | PyTorch](https://pytorch.org/get-started/previous-versions/)
 
-![image-20230530213619845](C:\Users\Lulu\Desktop\cv\image\pytorch安装14.png)
+![Alt text](https://github.com/AlanAluuu/cvPro/blob/main/pytorch/img/pytorch%E5%AE%89%E8%A3%8514.png)
 
 然后，cuda11.0对应下面的语句。
 
@@ -116,37 +115,38 @@ conda install pytorch==1.13.1 torchvision==0.14.1 torchaudio==0.13.1 pytorch-cud
 conda install pytorch==1.7.0 torchvision==0.8.0 torchaudio==0.7.0 cudatoolkit=11.0 -c pytorch
 ```
 
-注意这行命令需要在刚刚激活的py36环境里面运行，因为我的base环境里面的python是3.10，没办法成功下载pytorch，会产生版本冲突。即如下所示
+注意这行命令需要在刚刚激活的py36环境里面运行。即如下所示
 
-![image-20230531010345732](C:\Users\Lulu\Desktop\cv\image\pytorch安装15.png)
+![Alt text](https://github.com/AlanAluuu/cvPro/blob/main/pytorch/img/pytorch%E5%AE%89%E8%A3%8515.png)
+
 
 接下来的下载的速度很慢..............................................................下载完毕后用下面的方式测试是否安装成功
 
-![image-20230531121232817](C:\Users\Lulu\Desktop\cv\image\pytorch安装16.png)
+![Alt text](https://github.com/AlanAluuu/cvPro/blob/main/pytorch/img/pytorch%E5%AE%89%E8%A3%8516.png)
 
-最后 exit()退出python程序就行。
+下载完最后 exit()退出python程序就行。
 
 ## 五、PyCharm的下载
 
 PyCharm 是一款功能强大的 Python 编辑器，官网地址如下[PyCharm：JetBrains为专业开发者提供的Python IDE](https://www.jetbrains.com/zh-cn/pycharm/)。进入官网下载社区版本即可。下载过后双击可执行文件，即可以进行安装。安装路径我选择到了D盘。注意这一部分推荐选择所有
 
-![image-20230531123002736](C:\Users\Lulu\Desktop\cv\image\pytorch安装17.png)
+![Alt text](https://github.com/AlanAluuu/cvPro/blob/main/pytorch/img/pytorch%E5%AE%89%E8%A3%8517.png)
 
 之后一种next安装即可。然后创建new project，因为当时创建了虚拟环境py36并在这个虚拟环境中安装的Pytorch，所以需要在pycharm中配置conda的虚拟环境。
 
 找到之前创建的py36的路径，我的是下面
 
-![image-20230531130635031](C:\Users\Lulu\Desktop\cv\image\pytorch安装18.png)
+![Alt text](https://github.com/AlanAluuu/cvPro/blob/main/pytorch/img/pytorch%E5%AE%89%E8%A3%8518.png)
 
 创建工程时选择Previously configured interpreter，再选择Add Interpreter，注意不要选择New environment using。
 
-![image-20230531130753288](C:\Users\Lulu\Desktop\cv\image\pytorch安装19.png)
+![Alt text](https://github.com/AlanAluuu/cvPro/blob/main/pytorch/img/pytorch%E5%AE%89%E8%A3%8519.png)
 
 
 
 然后选择自己创建的虚拟环境py36下的python.exe作为这个项目的python解释器。
 
-![image-20230531131048095](C:\Users\Lulu\Desktop\cv\image\pytorch安装20.png)
+![Alt text](https://github.com/AlanAluuu/cvPro/blob/main/pytorch/img/pytorch%E5%AE%89%E8%A3%8520.png)
 
 然后创建一个python文件进行测试，内容如下
 
@@ -176,6 +176,6 @@ ImportError: numpy.core.multiarray failed to import
 
 。解决后再次运行代码，如出如下
 
-![image-20230531164009555](C:\Users\Lulu\Desktop\cv\image\pytorch安装21.png)
+![Alt text](https://github.com/AlanAluuu/cvPro/blob/main/pytorch/img/pytorch%E5%AE%89%E8%A3%8521.png)
 
 这样环境就配置好了！！！！！！
