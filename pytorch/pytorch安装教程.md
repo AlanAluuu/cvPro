@@ -5,11 +5,12 @@
 图形处理器 GPU是显卡上的一块芯片。每台计算机必有主板CPU，但少数计算机可能没有显卡。显卡的全称是“显示适配器”，显卡最初被发明是单纯为了大型 3D 游戏用，后来被发现还可以用来顺带加速 PyTorch 的运行速度（比 CPU 快 10-100 倍）。查看自己的计算机的显卡为：**任务管理器——性能——左侧栏**划到最下面。我的电脑上（win11）如下图所示
 
 ![Alt text](https://github.com/AlanAluuu/cvPro/blob/main/pytorch/img/pytorch%E5%AE%89%E8%A3%851.png)
-下载完cuba安装前首先要查看显卡支持的最高CUDA的版本，以便下载对应的CUDA安装包。这里使用cmd命令行查看。输入nvidia-smi，我的电脑上是11.0。![image-20230530165538951](C:\Users\Lulu\Desktop\cv\image\pytorch安装2.png)
+下载完cuda安装前首先要查看显卡支持的最高CUDA的版本，以便下载对应的CUDA安装包。这里使用cmd命令行查看。输入nvidia-smi，我的电脑上是11.0。
+![Alt text](https://github.com/AlanAluuu/cvPro/blob/main/pytorch/img/pytorch%E5%AE%89%E8%A3%852.png)
 
 也可以打开控制面板->搜索NVIDIA->双击进入NVIDIA控制面板->点击帮助->系统信息->组件。我的最高支持是11.0.208.
 
-![image-20230530165921502](C:\Users\Lulu\Desktop\cv\image\pytorch安装3.png)
+![Alt text](https://github.com/AlanAluuu/cvPro/blob/main/pytorch/img/pytorch%E5%AE%89%E8%A3%853.png)
 
 
 
